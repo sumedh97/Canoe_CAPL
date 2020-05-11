@@ -1,0 +1,18 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+on key 'a'
+{
+  @sysvar::MySysVarStruct::Testing.Member1=10;
+  @sysvar::MySysVarStruct::Testing.Member2=4;
+  @sysvar::MySysVarStruct::Testing.Member3=6;
+  
+}
