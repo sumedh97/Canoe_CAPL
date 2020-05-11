@@ -1,0 +1,58 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+on sysvar power::`start
+{
+  message 0x100 m1;
+  m1.dlc=1;
+  m1.can=1;
+  m1.byte(0)=@this;
+  output(m1);
+}
+
+on message 0x100
+{
+  if(@power::`start==1)
+  {
+    @power::green=1;
+    @power::red=0;
+  }
+}
+
+on sysvar power::`stop
+{
+  message 0x200 m2;
+  m2.dlc=1;
+  m2.can=1;
+  m2.byte(0)=@this;
+  output(m2);
+}
+
+on message 0x200
+{
+  if(@power::`stop==1)
+  {
+    @power::green=0;
+    @power::red=1;
+  }
+}
+
+on key 'a'
+{
+  @power::green=0;
+    @power::red=1;
+}
+
+on key 'b'
+{
+  @power::green=1;
+    @power::red=0;
+}
+  
