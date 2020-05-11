@@ -1,0 +1,20 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message Message_1 m1;
+}
+
+on key 'a'
+{
+  m1.dlc=8;
+  m1.Signal_1=10;
+  output(m1);
+  
+}
+
+
