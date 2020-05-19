@@ -1,0 +1,96 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+ 
+  message Engine m1;
+  message speed m2;
+  
+  int count=100;
+}
+
+on key 'a'
+{
+  m1.Signal_1=10;
+  output(m1);
+}
+on key'b'
+{
+  m1.Signal_1=20;
+  output(m1);
+}
+
+on key 's'
+{
+  m2.Signal_2=10;
+  output(m2);
+  
+}
+
+on key 'd'
+{
+  m2.Signal_2=30;
+  output(m2);
+  
+}
+  
+
+on message Engine
+{
+  
+  if(m1.Signal_1==10)
+  {
+    write("Engine Start");
+  }
+  if(m1.Signal_1==20)
+  {
+    write("Engine Stop");
+  }
+  
+  DoorLock();
+}
+
+on message speed
+{
+  if(m2.Signal_2==10)
+  {
+    m2.Signal_2=++count;
+   output(m2);
+  }
+  Speed();
+  
+ if(m2.Signal_2==30)
+  {
+      m2.Signal_2=--count;
+  output(m2);
+  }
+ 
+   
+  
+}
+
+DoorLock()
+{
+  if(m1.Signal_1==10)
+  {
+    write("Door Locked");
+  }
+  if(m1.Signal_1==20)
+  {
+    write("Door Unlocked");
+  }
+  
+}
+
+Speed()
+{
+  if(m2.Signal_2==105)
+  {
+    write("Center Locked on");
+  }
+  
+}
