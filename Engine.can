@@ -1,0 +1,22 @@
+/*@!Encoding:1252*/
+variables 
+{
+}
+
+on sysvar sysvar::Engine::EngineStateSwitch
+{
+ $EngineState::OnOff = @this;
+  if(@this)
+    $EngineState::EngineSpeed = @sysvar::Engine::EngineSpeedEntry;
+  else
+    $EngineState::EngineSpeed = 0;
+}
+
+on sysvar sysvar::Engine::EngineSpeedEntry
+{
+  if(@sysvar::Engine::EngineStateSwitch) 
+  {
+    $EngineState::EngineSpeed = @this;
+  }
+}
+

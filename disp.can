@@ -1,0 +1,28 @@
+/*@!Encoding:1252*/
+variables 
+{
+}
+
+on sysvar Light::HeadLightSwitch
+{
+  message LightState m1;
+ 
+  output(m1);
+}
+
+on message LightState
+{
+  if(@Light::HeadLightSwitch==1)
+  {
+    @Light::LeftLight=1;
+     @Light::RightLight=1;
+  }
+  else
+    if(@Light::HeadLightSwitch==0)
+    {
+       @Light::RightLight=0;
+       @Light::LeftLight=0;
+    }
+}
+
+
