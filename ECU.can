@@ -1,0 +1,88 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  int count=10;
+  message EngineState m1;
+  
+}
+on key 'x'
+{
+write("Press Key for Following Functions");
+  write("(a)->Start Engine");
+  write("(b)->Stop Engine");
+  write("(s)->Accelerate");
+  write("(d)->decelerate");
+}
+on key 'a'
+{
+  m1.dlc=8;
+  m1.OnOff=10;
+  output(m1);
+
+  if(m1.OnOff==10)
+  {
+    write("Engine Start");
+    Doorlok();
+  }
+}
+
+on key 'b'
+{
+  m1.dlc=8;
+  m1.OnOff=20;
+  output(m1);
+
+  if(m1.OnOff==20)
+  {
+    write("Engine Stop");
+    Doorlok();
+  }
+}
+
+on key 's'
+{
+  m1.dlc=8;
+  m1.OnOff=10;
+ // output(m1);
+  
+  Speed();
+}
+  
+on key 'd'
+{
+  m1.dlc=8;
+  m1.OnOff=--count;
+  output(m1);
+  
+  
+}
+Doorlok ()
+{
+  if(m1.OnOff==10)
+  {
+    write("Doors Locked");
+  }
+  if(m1.OnOff==20)
+  {
+    write("Doors UnLocked");
+  }
+}
+
+Speed()
+{
+  if(m1.OnOff==10)
+  {
+   m1.OnOff= ++count;
+  }
+  output(m1);
+  if(count==14)
+  {
+    write("Center Lock On");
+    }
+ 
+}
